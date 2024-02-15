@@ -1,0 +1,119 @@
+@font-face {
+
+}
+
+:root {
+    --body-color: #fff; 
+    --text-color: #000;
+    --red-color: rgb(239, 10, 10);
+    --frame-color: rgb(247, 249, 236);
+    --grey-color: rgb(91, 90, 90);
+    --yellow-color: rgb(255, 234, 0);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+
+}
+
+header {
+    height: 5rem;
+    background-color: var(--yellow-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+    margin: 2rem;
+    background-color: lightpink;
+}
+
+.polaroid-container {
+    width: 12rem;
+    height: 17rem;
+}
+
+.polaroid {
+    width: 100%;
+    height: 100%;
+}
+
+.polaroid-frame, .polaroid-back {
+    width: 100%;
+    height: 100%;
+}
+
+.polaroid-frame {
+    display: flex; /* om de child (polaroid-photo) te positioneren */
+    flex-direction: column;
+    justify-content: space-evenly; /* add more white space around the text */
+    align-items: center;
+    background-color: var(--frame-color);
+    border-radius: 0.1rem 0.1rem 0.3rem 0.3rem;
+    border: 0.01rem solid var(--text-color);
+}
+
+.polaroid-photo {
+    width: 10rem;
+    height: 12rem;
+    background-color: var(--text-color);
+}
+
+.polaroid-back {
+    background-color: var(--frame-color);
+    border-radius: 0.1rem 0.1rem 0.3rem 0.3rem;
+    border: 0.01rem solid var(--text-color);
+    color: var(--body-color);
+}
+
+.polaroid-backwrap-top {
+    margin-top: 0.2rem; /* white line on top */
+    width: 100%;
+    height: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: var(--grey-color);
+    padding: 0.1rem;
+    font-size: 0.8rem;
+}
+
+.polaroid-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 12rem;
+    background-color: var(--text-color);
+}
+
+.polaroid-backwrap-bottom {
+    /* display: flex;
+    align-items: center; */
+    width: 100%;
+    height: 3.8rem;
+    background-color: var(--grey-color);
+    border-radius: 0 0 0.3rem 0.3rem;
+    font-size: 0.8rem;
+}
+
+.polaroid-backwrap-bottom p {
+    width: 4rem;
+}
+
+
+
+
+
