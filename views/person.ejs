@@ -1,9 +1,54 @@
 <%- include('./partials/head') %>
 
-<a href="/">Back</a>
+<main>
+  <ul class="person-container">
+    <div class="polaroid">
+      <div class="polaroid-front">
+        <div class="polaroid-photo">
+          <img src="<%= person.avatar %>" alt="profiel">
+        </div>
+        <a href="/person/<%= person.id %>"><%= person.name %> <%= person.prefix %> <%= person.surname %></a>
+      </div>
 
-<h2><%= person.name %></h2>
+      <div class="polaroid-back">
+        <div class="polaroid-backwrap-top">
+          <p>Don't put in mouth. Don't put in mouth.</p>
+        </div>
+        <div class="polaroid-about">
+          <a> <%= person.website %></a>
+        </div>
+        <div class="polaroid-backwrap-bottom">
+          <p><span style="font-size:1.2rem">instax</span>FUJIFILM</p>
+          <p>instaxFUJIFILM</p>
+        </div>
+      </div>
+    </div>
+</ul>
+</main>
+
+<form method="POST" action="/">
+    <label>
+        Comments:
+        <textarea required name="bericht"></textarea>
+    </label>
+    <button type="submit">Comment</button>
+</form>
+
+<ul>
+    <% messages.forEach(message => { %>
+        <li> <%= message %> </li>
+    <% }) %>
+</ul>
+
+
+
+
+<!-- <a href="/">Back</a> -->
+
+<!-- <h2><%= person.name %></h2>
 
 <p>Squad: <%= person.squad_id %>
+ -->
+
 
 <%- include('./partials/foot') %>

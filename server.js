@@ -1,3 +1,5 @@
+/*** Express setup & start ***/
+
 // 1. opzetten van de webserver
 // Importeer het npm pakket express uit de node_modules map
 import express from 'express'
@@ -5,15 +7,12 @@ import express from 'express'
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-// Stel het basis endpoint in
-const apiUrl = 'https://fdnd.directus.app/items'
-// bovenstaande link, ook wel apiURL
-
-// Haal alle squads uit de WHOIS API op
-const squadData = await fetchJson(apiUrl + '/squad')
-
 // Maak een nieuwe express app aan
 const app = express()
+
+// Zorg dat werken met request data makkelijker wordt 
+app.use(express.urlencoded({extended: true}))
+
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
@@ -24,6 +23,31 @@ app.set('views', './views')
 // laatse gedeelte van stap 1
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
+
+// Stel het poortnummer in waar express op moet gaan luisteren
+app.set('port', process.env.PORT || 8000)
+
+// Start express op, haal daarbij het zojuist ingestelde poortnummer op
+app.listen(app.get('port'), function () {
+  // Toon een bericht in de console en geef het poortnummer door
+  console.log(`Application started on http://localhost:${app.get('port')}`)
+})
+
+
+
+
+/*** routes & data ***/
+
+// Stel het basis endpoint in (baseURL)
+const apiUrl = 'https://fdnd.directus.app/items'
+// bovenstaande link, ook wel apiURL
+
+// Haal alle squads uit de WHOIS API op
+const squadData = await fetchJson(apiUrl + '/squad')
+
+// zet een array klaar, waarin we alle berichten van ons message board kunnen opslaan (mini database)
+const messages = []
+
 
 // 2. routes die HTTP requests en responses afhandelen
 
@@ -38,34 +62,50 @@ app.get('/', function (request, response) {
     // stap 2.3
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // stap 2.4 (html maken op basis van JSON data)
-    response.render('index', {persons:persons.data,squads:squadData.data})
+    response.render('index', {
+      persons:persons.data,
+      squads:squadData.data
+    })
   })
+  
 })
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
+  //voeg een nieuw bericht toe aan de messages array
+  messages.push(request.body.bericht)
+
   // Er is nog geen afhandeling van POST, redirect naar GET op /
   response.redirect(303, '/')
 })
+
+  
 
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get('/person/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render('person', {person: apiData.data, squads:squadData.data})
+    response.render('person', {
+      person: apiData.data, 
+      squads:squadData.data, 
+      messages:messages
+    })
   })
+
+  // Maak een POST route voor de index
+app.post('/', function (request, response) {
+  //voeg een nieuw bericht toe aan de messages array
+  messages.push(request.body.bericht)
+
+  // Er is nog geen afhandeling van POST, redirect naar GET op /
+  response.redirect(303, '/')
+})
 })
 
-// 3. start de webserver
 
-// Stel het poortnummer in waar express op moet gaan luisteren
-app.set('port', process.env.PORT || 8000)
 
-// Start express op, haal daarbij het zojuist ingestelde poortnummer op
-app.listen(app.get('port'), function () {
-  // Toon een bericht in de console en geef het poortnummer door
-  console.log(`Application started on http://localhost:${app.get('port')}`)
-})
+
+
 
 
