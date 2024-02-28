@@ -1,6 +1,7 @@
 <%- include('./partials/head') %>
 
 <!-- Hiermee link ik de gegevens van elke persoon uit squad D (zie server.js) aan een polaroid kaartje -->
+
 <main>
 <% persons.forEach(person => { %>
   <ul class="person-container">
@@ -17,7 +18,7 @@
           <p>Don't put in mouth. Don't put in mouth.</p>
         </div>
         <div class="polaroid-about">
-          <a> <%= person.website %></a>
+          <a href="/person/<%= person.id %>"><%= person.website %></a>
         </div>
         <div class="polaroid-backwrap-bottom">
           <p><span style="font-size:1.2rem">instax</span>FUJIFILM</p>
