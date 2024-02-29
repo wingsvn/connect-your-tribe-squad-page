@@ -6,7 +6,7 @@
         <div class="polaroid-front">
           <div class="polaroid-photo">
             <!--hieronder haal ik de foto op van elk persoon, indien er geen foto is (error) gebruik dan de volgende foto in plaats van-->
-            <img src="<%= person.avatar %>" alt="profiel" onerror="this.onerror=null; this.src='../images/avatar_fallback.jpeg'" alt="placeholder avatar">
+            <img src="<%= person.avatar %>" onerror="this.onerror=null; this.src='../images/avatar_fallback.jpeg'" alt="placeholder avatar">
           </div>
           <a href="/person/<%= person.id %>" aria-label="person detailpage"><%= person.name %> <%= person.prefix %> <%= person.surname %></a>
         </div>
