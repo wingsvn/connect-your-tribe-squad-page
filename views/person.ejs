@@ -1,54 +1,50 @@
 <%- include('./partials/head') %>
+<main class="detail-page">
+  <section class="person-detail">
+    <ul class="person-container">
+      <li class="polaroid">
+        <div class="polaroid-front">
+          <div class="polaroid-photo">
+            <!--hieronder haal ik de foto op van elk persoon, indien er geen foto is (error) gebruik dan de volgende foto in plaats van-->
+            <img src="<%= person.avatar %>" alt="profiel" onerror="this.onerror=null; this.src='../images/avatar_fallback.jpeg'" alt="placeholder avatar">
+          </div>
+          <a href="/person/<%= person.id %>" aria-label="person detailpage"><%= person.name %> <%= person.prefix %> <%= person.surname %></a>
+        </div>
+  
+        <div class="polaroid-back">
+          <div class="polaroid-backwrap-top">
+            <p>Don't put in mouth. Don't put in mouth.</p>
+          </div>
+          <div class="polaroid-about">
+            <a href="/person/<%= person.id %>" aria-label="person githubpage"><%= person.website %></a>
+          </div>
+          <div class="polaroid-backwrap-bottom">
+            <p>instaxFUJIFILM</p>
+            <p>instaxFUJIFILM</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-<main>
-  <ul class="person-container">
-    <div class="polaroid">
-      <div class="polaroid-front">
-        <div class="polaroid-photo">
-          <img src="<%= person.avatar %>" alt="profiel">
-        </div>
-        <a href="/person/<%= person.id %>"><%= person.name %> <%= person.prefix %> <%= person.surname %></a>
-      </div>
+  <section class="form">
+    <form method="POST" action="/person/<%- person.id %>">
+      <label>Leave a comment!</label>
+          <textarea required name="message"></textarea>
 
-      <div class="polaroid-back">
-        <div class="polaroid-backwrap-top">
-          <p>Don't put in mouth. Don't put in mouth.</p>
-        </div>
-        <div class="polaroid-about">
-          <a href="/person/<%= person.website %>"><%= person.website %></a>
-        </div>
-        <div class="polaroid-backwrap-bottom">
-          <p><span style="font-size:1.2rem">instax</span>FUJIFILM</p>
-          <p>instaxFUJIFILM</p>
-        </div>
-      </div>
-    </div>
-</ul>
+      <button type="submit" name="actie" value="verstuur">send comment</button>
+  </form>
+
+  <% if (person.custom.messages && person.custom.messages.length) { %>
+  <ul>
+      <% person.custom.messages.forEach(message => { %>
+          <li> <%= message %> </li>
+      <% }) %>
+  </ul>
+  <% } else { %>
+    <p>Er zijn nog geen berichten.</p>
+  <% } %>
+  </section>
 </main>
-
-<form method="POST" action="/">
-    <label>
-        Comments:
-        <textarea required name="bericht"></textarea>
-    </label>
-    <button type="submit">Comment</button>
-</form>
-
-<ul>
-    <% messages.forEach(message => { %>
-        <li> <%= message %> </li>
-    <% }) %>
-</ul>
-
-
-
-
-<!-- <a href="/">Back</a> -->
-
-<!-- <h2><%= person.name %></h2>
-
-<p>Squad: <%= person.squad_id %>
- -->
-
 
 <%- include('./partials/foot') %>
