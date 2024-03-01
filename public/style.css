@@ -44,7 +44,7 @@ header p {
     font-size: 1rem;
 }
 
-main {
+main.index-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,6 +58,7 @@ main {
     /* background-color: transparent; */
     margin-bottom: 2rem;
 }
+
 
 .polaroid {
     width: 100%;
@@ -73,6 +74,34 @@ main {
 .polaroid.flip { 
     transform: rotateY(180deg);
 }
+
+
+.polaroid.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0% {
+       rotate: -2deg;
+       translate: -0.1rem;
+    }
+    25% {
+      rotate: 2deg;
+      translate: 0.1rem;
+    }
+    50% {
+      rotate: -2deg;
+      translate: -0.1rem;
+    }
+    75% {
+      rotate: 2deg;
+      translate: 0.1rem;
+    }
+    100% {
+      rotate: 0deg;
+      translate: 0;
+    }
+  }
 
 /* .person-container:hover .polaroid {
     transform: rotateY(180deg);
@@ -115,13 +144,12 @@ main {
     border: 0.01rem solid var(--text-color);
     color: var(--body-color);
     transform: rotateY(180deg);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .polaroid-back a {
     color: var(--body-color)
 }
-
-
 
 .polaroid-backwrap-top {
     margin-top: 0.2rem; /* white line on top */
@@ -154,16 +182,67 @@ main {
 }
 
 /*  extra styling detail page */
-.detail-page {
+main.detail-page {
     display: flex;
+    justify-content: space-evenly;
+    /* align-items:flex-start; */
+    margin-top: 7rem;
 }
+
+.detail-page h2 {
+    margin-bottom: 1rem;
+    font-family: "Rubik Glitch Pop", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    color: var(--text-color)
+}
+
 form {
-    display: flex;
+    display: flex; 
     flex-direction: column;
 }
+
 label {
+    display: flex;
+    justify-content: center;
     background-color: var(--frame-color);
-    border: 0.1rem solid black;
+    border: 0.01rem solid black;
+}
+
+form, button, h3 {
+    font-family: "Rubik Bubbles", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+textarea {
+    /* background-color: var(--frame-color); */
+}
+
+button {
+    background-color: var(--frame-color);
+}
+
+textarea, li {
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+ul.messageboard {
+    margin-top: 2rem;
+}
+
+
+li {
+    list-style: none;
+    margin-top: 0.5rem;
+    background-color: var(--frame-color);
+    border-radius: 0.2rem;
+    border: 0.01rem solid black;
 }
 
 

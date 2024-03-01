@@ -45,7 +45,8 @@ const apiUrl = 'https://fdnd.directus.app/items'
 // Haal alle squads uit de WHOIS API op
 const squadData = await fetchJson(apiUrl + '/squad')
 
-// zet een array klaar, waarin we alle berichten van ons message board kunnen opslaan (mini database)
+// zet een array klaar, waarin we alle berichten van ons message board tijdelijk kunnen opslaan (mini temporary database)
+// deze regel is niet meer nodig omdat de berichten nu worden opgeslagen in de API (berichten blijven staan ook als de server op nieuw wordt opgestart, tenzij de berichten in de WHOIS API worden verwijderd)
 const messages = []
 
 

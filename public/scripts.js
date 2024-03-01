@@ -3,20 +3,32 @@
 // *** flip card by on click - tutorial: https://www.youtube.com/watch?v=or2g2bAEMRc ***
 
 // hier selecteer ik de elementen waar de interactie op moet plaatsvinden
-const cards = document.querySelectorAll('.polaroid');
+const polaroidElements = document.querySelectorAll('.polaroid');
 // console.log('kaartje')
 
 // bij een klik actie zal het element .polaroid 180deg om zijn Y-as draaien
 // hiermee zorg ik ervoor dat elke polaroid kaart wordt geselecteerd voor deze functie
-cards.forEach(function(card){
-    card.addEventListener('click', function(){
-        card.classList.toggle('flip'); 
+polaroidElements.forEach(function(polaroidElement){
+    polaroidElement.addEventListener('click', function(){
+        polaroidElement.classList.toggle('flip'); 
     });
 });
 
-// console.log('klik')
+// *** shake animation ***
+// eerst selecteer ik ELK polaroid kaartje
+// op de addEventlistener mouseover zorg ik ervoor dat het geselecteerde element de animatie 'shake' uitvoert
+polaroidElements.forEach(function(polaroidElement){
+    polaroidElement.addEventListener('mouseover', function(){ 
+        polaroidElement.classList.add('shake');
+    });
+});
 
-
+// verwijderen van de shake animatie wanneer er niet meer op het geslecteerde element wordt gehoverd.
+polaroidElements.forEach(function(polaroidElement){
+    polaroidElement.addEventListener('mousout', function() {
+        polaroidElement.classList.remove('shake');
+    })
+});
 
 // *** random color generator ***
 
@@ -36,7 +48,7 @@ function generateNewColor() {
 // 3. een nieuwe functie aanmaken om de kleur van de polaroid kaartjes te wijzigen wanneer deze wordt aangeroepen
 function cardcolor() {
     // hiermee selecteer ik de elementen die aangeroepen moeten worden, in dit geval ALLE elementen met de class 'polaroid-front', deze worden vervolgens opgeslagen in de variabele 'cardElements'.
-    const cardElements = document.querySelectorAll(".polaroid-front");
+    const cardElements = document.querySelectorAll(".polaroid-front, .polaroid-back");
     // hiermee zorg ik ervoor dat ELKE polaroid kaart wordt geselecteerd
     cardElements.forEach(function(card){
         // voor elk element (polaroid) wordt een nieuwe kleur toegewezen die is gegenereert in stap 2.

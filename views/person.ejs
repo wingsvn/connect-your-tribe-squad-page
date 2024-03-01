@@ -1,6 +1,7 @@
 <%- include('./partials/head') %>
 <main class="detail-page">
   <section class="person-detail">
+    <h2>more about:</h2>
     <ul class="person-container">
       <li class="polaroid">
         <div class="polaroid-front">
@@ -28,19 +29,22 @@
   </section>
 
   <section class="form">
+    <h2>messages</h2>
     <form method="POST" action="/person/<%- person.id %>">
-      <label>Leave a comment!</label>
-          <textarea required name="message"></textarea>
+      <label>Leave a message!</label>
+          <textarea placeholder="type your message here..." name="message"></textarea>
 
-      <button type="submit" name="actie" value="verstuur">send comment</button>
+      <button type="submit" name="actie" value="verstuur">send</button>
   </form>
 
   <% if (person.custom.messages && person.custom.messages.length) { %>
-  <ul>
+  <ul class="messageboard">
+    <h3>your messageboard</h3>
       <% person.custom.messages.forEach(message => { %>
-          <li> <%= message %> </li>
+          <li class="messages"> <%= message %> </li>
       <% }) %>
   </ul>
+
   <% } else { %>
     <p>Er zijn nog geen berichten.</p>
   <% } %>

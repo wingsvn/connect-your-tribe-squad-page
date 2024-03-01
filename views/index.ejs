@@ -1,7 +1,7 @@
 <%- include('./partials/head') %>
 
   <!--Hiermee wordt elke persoon uit squad D gelinkt aan een polaroid kaartje: loop. Deze gegevens zijn gelinkt aan de server en komen uit de WHOIS API database. -->
-  <main>
+  <main class="index-page">
     <% persons.forEach(person => { %>
   <ul class="person-container">
     <li class="polaroid">
@@ -19,6 +19,7 @@
         </div>
         <div class="polaroid-about">
           <a href="/person/<%= person.id %>" aria-label="person githubpage"><%= person.website %></a>
+          <a href="<%= person.website %>"></a>
         </div>
         <div class="polaroid-backwrap-bottom">
           <p>instaxFUJIFILM</p>
