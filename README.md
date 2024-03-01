@@ -21,6 +21,9 @@ Een teampage met op elk polaroid kaartje gegevens van ieder persoon uit squad D.
 
 <img width="669" alt="image" src="https://github.com/wingsvn/connect-your-tribe-squad-page/assets/144009709/4a43ad13-7f98-4ed0-8fe4-6ad21d0d09d4">
 
+<img width="540" alt="Scherm­afbeelding 2024-03-01 om 09 47 56" src="https://github.com/wingsvn/connect-your-tribe-squad-page/assets/144009709/b9a0e1ab-6639-4aa1-9a5c-9ba8d27d1ebc">
+
+
 <!-- Voeg een link toe naar Github Pages 🌐-->
 
 ## Kenmerken
@@ -31,9 +34,9 @@ Ik heb tijdens dit project Node, express en EJS gebruikt.
 **Node:** een platform waar je Javascript buiten de webbrowser kunt schrijven, namelijk op servers. Je kan hiermee voor het bouwen van websites en applicaties Javascript gebruiken op zowel de client-side als de server-side.
 
 
-**Express:** een framework voor node.js, hiermee kun je werken met API, namelijk door het aanmaken van routes (HTTP requests) naar de databases.
+**Express:** een framework voor node.js, hiermee kun je werken met API's, namelijk door het aanmaken van routes (HTTP requests) naar de databases.
 
-**EJS:** embedded Javascript, html dat wordt verpakt in Javascript.
+**EJS:** embedded Javascript, html dat wordt verpakt in Javascript voor het maken van dynamische websites.
 
 
 ## Installatie
